@@ -8,16 +8,24 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 20px;
             padding: 20px;
-            background: linear-gradient(135deg, #fbe8eb, #f9e5f0);
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            color: #333;
         }
+
         h2 {
             color: #333;
             margin-bottom: 20px;
             text-align: center;
+            font-weight: bold;
         }
+
+        .search-bar, .sort-dropdown {
+            margin-bottom: 20px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -27,33 +35,57 @@
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         th, td {
             padding: 12px;
             border: 1px solid #ddd;
             text-align: left;
         }
+
         th {
-            background-color: #b95c8a;
+            background-color: #6f42c1; /* Purple */
             color: white;
             font-weight: bold;
         }
+
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+
         tr:hover {
             background-color: #f1f1f1;
         }
+
         .no-transactions {
             text-align: center;
             color: #777;
             font-size: 1.2rem;
         }
-        .search-bar, .sort-dropdown, .view-button {
-            margin-bottom: 20px;
+
+        .view-button {
+            display: block;
+            margin: 20px auto;
+            width: fit-content;
         }
-         .back-button {
+
+        .back-button {
             margin-top: 20px;
             text-align: center;
+        }
+
+        .back-button a {
+            color: #fff;
+            background: linear-gradient(135deg, #6f42c1, #5936b1); 
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+            display: inline-block;
+        }
+
+        .back-button a:hover {
+            background: linear-gradient(135deg, #5936b1, #6f42c1);
         }
     </style>
 </head>
@@ -63,6 +95,7 @@
     <!-- Search and Sort Form -->
     <form action="ViewTransactionsController" method="get" class="search-bar">
         <div class="form-group">
+            <label for="search">Search:</label>
             <input type="text" name="search" placeholder="Search by account number or receiver" class="form-control" value="${param.search}">
         </div>
         <div class="form-group">
@@ -84,7 +117,7 @@
     </c:if>
 
     <c:if test="${not empty transactions}">
-        <table class="table">
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Account Number</th>
@@ -106,6 +139,11 @@
                 </c:forEach>
             </tbody>
         </table>
-    </c:if>s
+    </c:if>
+
+    <div class="back-button">
+        <a href="adminDashboard.jsp" class="button">Back to Dashboard</a>
+    </div>
+
 </body>
 </html>

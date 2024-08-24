@@ -20,6 +20,7 @@
             background: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
         }
         h1 {
             margin-bottom: 30px;
@@ -78,9 +79,23 @@
             text-align: center;
             vertical-align: middle;
         }
-         .back-button {
+        .back-button {
             margin-top: 20px;
             text-align: center;
+        }
+        .back-button a {
+            color: #fff;
+            background: linear-gradient(135deg, #e83e8c, #d63384); 
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+            display: inline-block;
+        }
+
+        .back-button a:hover {
+            background: linear-gradient(135deg, #d63384, #e83e8c); 
         }
     </style>
 </head>
@@ -131,4 +146,4 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-</html>
+</html> 	

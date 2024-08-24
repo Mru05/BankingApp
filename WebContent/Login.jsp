@@ -85,6 +85,15 @@
             border-radius: 10px;
             font-size: 14px;
             box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .login-container input[type="text"]:focus,
+        .login-container input[type="password"]:focus,
+        .login-container select:focus {
+            border-color: #4568DC; /* Purple Color for focus */
+            box-shadow: 0 0 0 0.2rem rgba(69, 104, 220, 0.25);
+            border-bottom: 2px solid #4568DC; /* Add a bottom border */
         }
 
         .login-container input[type="submit"] {
@@ -98,6 +107,7 @@
             cursor: pointer;
             margin-top: 15px;
             transition: background-color 0.3s ease;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
         }
 
         .login-container input[type="submit"]:hover {
@@ -107,6 +117,7 @@
         .error-message {
             color: #e74c3c;
             margin-top: 10px;
+            text-align: center; /* Center the error message */
         }
 
         .transaction-button {
@@ -143,6 +154,14 @@
                 <img src="images/image4.jpg" alt="Image 4">
             </div>
         </div>
+        <a class="carousel-control-prev" href="#backgroundCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#backgroundCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
 
     <div class="overlay"></div>
@@ -159,10 +178,7 @@
             <input type="submit" value="Login">
         </form>
 
-        <form action="TransactionPage.jsp" method="get">
-            <button type="submit" class="btn transaction-button">Perform Transactions</button>
-        </form>
-
+      
         <%
             String error = request.getParameter("error");
             if (error != null && error.equals("true")) {

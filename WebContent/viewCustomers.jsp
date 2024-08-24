@@ -8,19 +8,23 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
             margin: 20px;
             padding: 20px;
-            background: linear-gradient(135deg, #fbe8eb, #f9e5f0);
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef); /* Subtle Light Gray Gradient */
+            color: #333;
         }
+        
         h2 {
             color: #333;
             margin-bottom: 20px;
             text-align: center;
+            font-weight: bold;
         }
+
         .button {
             padding: 10px 20px;
-            background-color: #b95c8a;
+            background-color: #6f42c1; /* Purple */
             color: white;
             border: none;
             border-radius: 5px;
@@ -30,15 +34,18 @@
             margin: 10px 0;
             transition: background-color 0.3s ease;
         }
+
         .button:hover {
-            background-color: #a04a6e;
+            background-color: #5936b1; /* Darker Purple */
         }
+
         .search-bar, .sort-by {
             margin: 10px 0;
             display: flex;
             justify-content: center;
             align-items: center;
         }
+
         .search-bar input {
             width: 300px;
             padding: 10px;
@@ -46,10 +53,11 @@
             border-radius: 5px;
             border: 1px solid #ddd;
         }
+
         .search-bar button {
             margin-left: 10px;
             padding: 10px 20px;
-            background-color: #b95c8a;
+            background-color: #6f42c1; /* Purple */
             color: white;
             border: none;
             border-radius: 5px;
@@ -57,15 +65,18 @@
             font-size: 1rem;
             transition: background-color 0.3s ease;
         }
+
         .search-bar button:hover {
-            background-color: #a04a6e;
+            background-color: #5936b1; /* Darker Purple */
         }
+
         .sort-by select {
             padding: 10px;
             font-size: 1rem;
             border-radius: 5px;
             border: 1px solid #ddd;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -75,30 +86,51 @@
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         th, td {
             padding: 12px;
             border: 1px solid #ddd;
             text-align: left;
         }
+
         th {
-            background-color: #b95c8a;
+            background-color: #6f42c1; /* Purple */
             color: white;
             font-weight: bold;
         }
+
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+
         tr:hover {
             background-color: #f1f1f1;
         }
+
         .no-customers {
             text-align: center;
             color: #777;
             font-size: 1.2rem;
         }
-         .back-button {
+
+        .back-button {
             margin-top: 20px;
             text-align: center;
+        }
+
+        .back-button a {
+            color: #fff;
+            background: linear-gradient(135deg, #6f42c1, #5936b1); /* Purple Gradient */
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+            display: inline-block;
+        }
+
+        .back-button a:hover {
+            background: linear-gradient(135deg, #5936b1, #6f42c1); /* Darker Purple Gradient */
         }
     </style>
 </head>
@@ -107,14 +139,14 @@
 
     <div class="search-bar">
         <form action="ViewCustomersController" method="get">
-            <input type="text" name="search" placeholder="Search by name or email">
-            <button type="submit">Search</button>
+            <input type="text" name="search" placeholder="Search by name or email" class="form-control">
+            <button type="submit" class="btn btn-primary">Search</button>
         </form>
     </div>
 
     <div class="sort-by">
         <form action="ViewCustomersController" method="get">
-            <select name="sortBy" onchange="this.form.submit()">
+            <select name="sortBy" onchange="this.form.submit()" class="form-control">
                 <option value="">Sort By</option>
                 <option value="customer_id">Customer ID</option>
                 <option value="first_name">First Name</option>
@@ -129,7 +161,7 @@
     </c:if>
 
     <c:if test="${not empty customers}">
-        <table>
+        <table class="table table-striped table-hover">
             <thead>
                 <tr>
                     <th>Customer ID</th>
@@ -150,8 +182,10 @@
             </tbody>
         </table>
     </c:if>
-      <div class="back-button">
-                <a href="adminDashboard.jsp" class="btn btn-secondary">Back to Dashboard</a>
-            </div>
+
+    <div class="back-button">
+        <a href="adminDashboard.jsp" class="button">Back to Dashboard</a>
+    </div>
+
 </body>
 </html>

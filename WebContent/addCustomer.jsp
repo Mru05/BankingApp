@@ -8,27 +8,27 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #fbe8eb, #f9e5f0);
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            font-family: 'Arial', sans-serif;
         }
         .card {
             border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             width: 100%;
             max-width: 600px;
+            background-color: #fff;
         }
         .card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
         }
         .card-header {
-            background-color: #b95c8a;
+            background: linear-gradient(135deg, #6f42c1, #5936b1);
             color: #fff;
             text-align: center;
             font-size: 1.75rem;
@@ -52,11 +52,11 @@
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
         .form-control:focus {
-            border-color: #b95c8a;
-            box-shadow: 0 0 5px rgba(185, 92, 138, 0.5);
+            border-color: #6f42c1;
+            box-shadow: 0 0 5px rgba(111, 66, 193, 0.5);
         }
         .btn-primary {
-            background-color: #b95c8a;
+            background: linear-gradient(135deg, #6f42c1, #5936b1);
             border: none;
             border-radius: 5px;
             padding: 15px;
@@ -64,7 +64,19 @@
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
         .btn-primary:hover {
-            background-color: #a04a6e;
+            background: linear-gradient(135deg, #5936b1, #6f42c1);
+            transform: scale(1.03);
+        }
+        .btn-secondary {
+            background: linear-gradient(135deg, #fd7e14, #e96010);
+            color: #fff;
+            border-radius: 5px;
+            padding: 15px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #e96010, #fd7e14);
             transform: scale(1.03);
         }
         .btn-block {
@@ -77,12 +89,12 @@
             margin-bottom: 1rem;
         }
         .input-group-text i {
-            color: #b95c8a;
+            color: #6f42c1;
         }
         #accountType {
             font-size: 1.1rem;
             padding: 15px;
-            height: calc(2.5rem + 2px); /* Increase height for better visibility */
+            height: calc(2.5rem + 2px);
         }
         .back-button {
             margin-top: 20px;
@@ -132,8 +144,7 @@
                     </div>
                     <select class="form-control" id="accountType" name="accountType" required>
                         <option value="Savings">Savings</option>
-                        <option value="Current">Current</option>
-                        <option value="Credit">Credit</option>
+                        <option value="Current">Credit</option>
                     </select>
                 </div>
 
@@ -144,6 +155,26 @@
             <div class="back-button">
                 <a href="adminDashboard.jsp" class="btn btn-secondary">Back to Dashboard</a>
             </div>
+
+            <!-- Display success or error messages -->
+            <%
+                String success = request.getParameter("success");
+                String error = request.getParameter("error");
+
+                if (success != null && success.equals("true")) {
+            %>
+                <div class="alert alert-success" role="alert">
+                    Customer registered successfully!
+                </div>
+            <%
+                } else if (error != null) {
+            %>
+                <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                </div>
+            <%
+                }
+            %>
         </div>
     </div>
 </body>

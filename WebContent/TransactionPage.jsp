@@ -6,48 +6,97 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #fbe8eb, #f9e5f0);
-            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #282c34, #4568DC); /* Navy Blue to Purple Gradient */
+            font-family: 'Arial', sans-serif;
             padding: 20px;
+            transition: background 0.5s ease;
         }
+
         h1 {
-            color: #b95c8a;
+            color: #fff; /* White text for contrast */
             text-align: center;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
+
         .form-container {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             max-width: 600px;
             margin: auto;
+            transition: box-shadow 0.3s ease;
+            animation: slideInUp 0.5s ease-in-out;
         }
+
         .form-group label {
             font-weight: bold;
+            color: #fff; /* White for contrast */
         }
+
         .form-control {
             border-radius: 5px;
             box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ced4da;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
+
+        .form-control:focus {
+            border-color: #4568DC; /* Purple Color for focus */
+            box-shadow: 0 0 0 0.2rem rgba(69, 104, 220, 0.25);
+        }
+
         .btn-primary {
-            background-color: #b95c8a;
+            background: linear-gradient(135deg, #282c34, #4568DC); /* Navy Blue to Purple Gradient */
             border: none;
             border-radius: 5px;
             padding: 10px;
             font-size: 16px;
             transition: background-color 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            color: #fff; /* White text for contrast */
         }
+
         .btn-primary:hover {
-            background-color: #a04a6e;
+            background: linear-gradient(135deg, #4568DC, #282c34); /* Reverse Gradient on hover */
             transform: scale(1.05);
         }
+
         .alert {
             display: none;
         }
-         .back-button {
+
+        .back-button {
             margin-top: 20px;
             text-align: center;
+        }
+
+        .back-button a {
+            color: #fff;
+            background: linear-gradient(135deg, #282c34, #4568DC); /* Navy Blue to Purple Gradient */
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+            display: inline-block;
+        }
+
+        .back-button a:hover {
+            background: linear-gradient(135deg, #4568DC, #282c34); /* Reverse Gradient on hover */
+        }
+
+        /* Slide-in Animation */
+        @keyframes slideInUp {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -123,8 +172,8 @@
             document.getElementById('successMessage').style.display = 'block';
         <% } %>
     </script>
-      <div class="back-button">
-                <a href="userDashboard.jsp" class="btn btn-secondary">Back to Dashboard</a>
-            </div>
+    <div class="back-button">
+        <a href="userDashboard.jsp" class="btn btn-secondary">Back to Dashboard</a>
+    </div>
 </body>
 </html>

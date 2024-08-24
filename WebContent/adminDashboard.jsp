@@ -2,199 +2,146 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background: #f8f9fa;
-            margin: 0;
-            padding: 0;
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        .navbar {
-            background: #6f42c1;
-            padding: 15px;
-        }
-
-        .navbar-brand {
-            color: #ffffff;
-            font-size: 1.5rem;
-            text-align: center;
-            width: 100%;
-            display: block;
-            text-decoration: none;
-        }
-
-        .navbar-brand:hover {
-            color: #e0e0e0;
-        }
-
-        .logout-container {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .logout-button {
-            background-color: #dc3545;
-            color: #ffffff;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 8px;
-            font-size: 1.25rem;
-            text-decoration: none;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .logout-button:hover {
-            background-color: #c82333;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
         .container {
-            width: 90%;
-            max-width: 1200px;
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            margin: auto;
             margin-top: 30px;
         }
-
-        .container h1 {
-            color: #343a40;
-            margin-bottom: 30px;
-            font-size: 2.5rem;
-            font-weight: 600;
-            font-family: 'Roboto', sans-serif;
-        }
-
         .card {
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin-bottom: 20px;
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-        }
-
-        .card-body {
-            text-align: center;
-        }
-
-        .card-body a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 25px;
-            font-size: 1.5rem;
-            color: #ffffff;
-            background-color: #fd7e14; /* Orange color */
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
-            text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            font-weight: 500;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
         }
-
-        .card-body a i {
-            margin-right: 15px;
-            font-size: 1.75rem;
+        .card:hover {
+            transform: translateY(-5px);
         }
-
-        .card-body a:hover {
-            background-color: #e76000; /* Darker orange color */
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-        }
-
-        .card-body a:active {
-            transform: scale(1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .row {
+        .card-header {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: #fff;
+            padding: 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            font-weight: bold;
             display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
+            align-items: center;
         }
-
-        .col-md-3 {
-            flex: 1 1 23%;
-            margin-bottom: 20px;
+        .card-body {
+            padding: 30px;
+        }
+        .btn {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2980b9, #3498db);
+            transform: scale(1.05);
+        }
+        .btn-secondary {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: #fff;
+        }
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            transform: scale(1.05);
+        }
+        .btn-info {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: #fff;
+        }
+        .btn-info:hover {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            transform: scale(1.05);
+        }
+        .btn-warning {
+            background: linear-gradient(135deg, #f39c12, #d35400);
+            color: #fff;
+        }
+        .btn-warning:hover {
+            background: linear-gradient(135deg, #d35400, #f39c12);
+            transform: scale(1.05);
+        }
+        .btn i {
+            margin-right: 10px;
+        }
+        .logout-btn {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .logout-btn:hover {
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#">Admin Dashboard</a>
-    </nav>
-
-    <div class="logout-container">
-        <a class="logout-button" href="LogoutController">
-            <i class="bi bi-box-arrow-right"></i> Logout
-        </a>
-    </div>
-
     <div class="container">
-        <h1>Hello, Hope You are having a great day!!!</h1>
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-12">
                 <div class="card">
-                    <div class="card-body">
-                        <a href="addCustomer.jsp">
-                            <i class="bi bi-person-plus"></i>Add New Customer
-                        </a>
+                    <div class="card-header">
+                        <div>
+                            <i class="fas fa-tachometer-alt"></i> Admin Dashboard
+                        </div>
+                        <div>
+                            <a href="Login.jsp" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
                     <div class="card-body">
-                        <a href="transactions.jsp">
-                            <i class="bi bi-cash-stack"></i> Transactions
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body">
-                        <a href="addBankAccount.jsp">
-                            <i class="bi bi-bank"></i> Add Bank Account
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body">
-                        <a href="viewCustomers.jsp">
-                            <i class="bi bi-eye"></i> View Customers
-                        </a>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="addCustomer.jsp" class="btn btn-primary btn-block"><i class="fas fa-user-plus"></i> Add New Customer</a>
+                                <a href="transactions.jsp" class="btn btn-secondary btn-block"><i class="fas fa-exchange-alt"></i> Transactions</a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="addBankAccount.jsp" class="btn btn-info btn-block"><i class="fas fa-piggy-bank"></i> Add Bank Account</a>
+                            </div>
+                            <div class="col-md-3">
+                                <a href="viewCustomers.jsp" class="btn btn-warning btn-block"><i class="fas fa-users"></i> View Customers</a>
+                            </div>
+                        
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                
+                </div>
+            </div>
+        </div>
     </div>
-
     <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
